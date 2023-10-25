@@ -38,30 +38,33 @@ Requisitos não funcionais:
 1. Deve ser feito em Python sem o uso de bibliotecas adicionais.
 a. Utilizar a linha de comando para entrada e saída;
 b. Exceções de bibliotecas:
+
 ■ os -> os.system("clear") ou “cls”
 
-2. Os dados devem ser salvos em um arquivo no formato .csv
+3. Os dados devem ser salvos em um arquivo no formato .csv
 (Comma-separated values, valores separados por vírgulas)
 a. Perceba que o formato deste arquivo define que os valores estão
 separados por vírgula.
 b. O trabalho deve ser feito em grupo.
 c. Trabalhos que não forem feitos em grupo perderão 50% da nota.
-3. O código deve estar organizado, portanto, deve conter:
+4. O código deve estar organizado, portanto, deve conter:
 a. Funções para dividir o código de forma lógica e evitar repetições;
 b. Tratamento de exceções, para garantir que seu código esteja pronto
 para tratar casos inesperados.
 c. Legibilidade do código, incluindo nomeação de variáveis e funções.
-4. Deve ser feito um manual do usuário, explicando como utilizar a ferramenta e
+5. Deve ser feito um manual do usuário, explicando como utilizar a ferramenta e
 restrições gerais que a aplicação tenha.
 a. Fiquem à vontade para escolher como será feito esse manual. Pode
 ser um pdf, site, vídeo, carta...
-5. Não será aceito entregas atrasadas.
-6. Apresentação:
+6. Não será aceito entregas atrasadas.
+7. Apresentação:
 a. A equipe deve apresentar o projeto feito para os professores.
 b. Todos envolvidos da equipe devem explicar alguma parte, e perguntas
 direcionadas serão feitas durante a apresentação.
 c. O manual deve conter o fluxograma do projeto.
-7. A entrega será em uma atividade do classroom
+8. A entrega será em uma atividade do classroom
 a. O que deve ser entregue:
+
 ■ Código da aplicação.
+
 ■ Manual do usuário.
