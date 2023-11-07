@@ -3,9 +3,9 @@ os.system('cls')
 
 livros = []
 
-while True:
-    pergunta = input("Deseja cadastrar um livro? [S] sim e [N] não. ").upper()
+pergunta = input("Deseja cadastrar um livro? [S] sim e [N] não. ").upper()
 
+while True:
     if pergunta == 'S':
         nome = input("Qual o nome do livro?\n").title()
         autor = input("Quem escreveu este livro?\n").title()
@@ -21,7 +21,7 @@ while True:
 
         livros.append(livro)
 
-        print("As informações do(s) livro(s) adicionado(s) são: \n")
+        print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
         print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
         print(f"{nome}\t\t{autor}\t\t{categoria}\t\t{custo}\n")
         desejo = input('Você deseja continuar adicionando? [S] sim e [N] não. ').upper()
@@ -34,7 +34,7 @@ while True:
     else:
         break
 
-print("\nLista de livros cadastrados:\n")
+print("\n\t\tLista de livros cadastrados:\n")
 print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
 
 for livro in livros:
