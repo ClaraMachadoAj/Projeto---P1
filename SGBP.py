@@ -5,7 +5,6 @@ livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
 print('Olá Nathália!')
 
-# pra mim o loop tá puxando o olá nathália depois de perguntar se a pessoa deseja continuar. coloquei aqui e nao mudou nada
 
 while True:
 
