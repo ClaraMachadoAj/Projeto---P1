@@ -4,9 +4,7 @@ os.system('cls')
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
 
-def add():
-   
-livros{"Nome"}.append()
+
 
 while True:
 
@@ -15,19 +13,12 @@ while True:
 
 
    if direcionamento == 'ADICIONAR':
-      nome = input("Qual o nome do livro?\n").title()
-      autor = input("Quem escreveu este livro?\n").title()
-      categoria = input("Qual a categoria do livro?\n").title()
-      custo = float(input("Quanto custou este livro?\n"))
+      livros['Nome'].append(nome = input("Qual o nome do livro?\n").title())
+      livros['Autor'].append(autor = input("Quem escreveu este livro?\n").title())
+      livros['Categoria'].append(categoria = input("Qual a categoria do livro?\n").title())
+      livros['Custo'].append(custo = float(input("Quanto custou este livro?\n")))
 
-      livro = {
-            'Nome': nome,
-            'Autor': autor,
-            'Categoria': categoria,
-            'Custo': custo
-        }
-
-      livros.append(livro)
+      
 
       print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
       print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
