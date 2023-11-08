@@ -3,10 +3,13 @@ os.system('cls')
 
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
+print('Olá Nathália!')
+
+# pra mim o loop tá puxando o olá nathália depois de perguntar se a pessoa deseja continuar. coloquei aqui e nao mudou nada
+
 while True:
 
-   print('Olá Nathália!')
-   direcionamento = input('Que você gostaria de realizar hoje? (adicionar, visualizar, atualizar ou excluir) ').upper()
+   direcionamento = input('O quê você gostaria de realizar hoje? (adicionar, visualizar, atualizar ou excluir)\n ').upper()
 
 
    if direcionamento == 'ADICIONAR':
