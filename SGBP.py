@@ -3,20 +3,20 @@ os.system('cls')
 
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
-
-
-
 while True:
 
    print('Olá Nathália!')
-   direcionamento = input('Que você gostaria de realizar hoje? (adicionar, visualizar, atualizar ou excluir').upper()
+   direcionamento = input('Que você gostaria de realizar hoje? (adicionar, visualizar, atualizar ou excluir) ').upper()
 
 
    if direcionamento == 'ADICIONAR':
-      livros['Nome'].append(nome = input("Qual o nome do livro?\n").title())
-      livros['Autor'].append(autor = input("Quem escreveu este livro?\n").title())
-      livros['Categoria'].append(categoria = input("Qual a categoria do livro?\n").title())
-      livros['Custo'].append(custo = float(input("Quanto custou este livro?\n")))
+      livros['Nome'] = nome = input("Qual o nome do livro?\n").title()
+      
+      #Fazer um verificador pra ver se o livro já existe no arquivo, p n add o mesmo livro duas vezes!!
+
+      livros['Autor'] = autor = input("Quem escreveu este livro?\n").title()
+      livros['Categoria'] = categoria = input("Qual a categoria do livro?\n").title()
+      livros['Custo'] = custo = float(input("Quanto custou este livro?\n"))
 
       
 
@@ -28,6 +28,7 @@ while True:
       if desejo == 'S':
          continue
       else:
+         print(livros)
          break
 
    elif direcionamento == 'VISUALIZAR':
@@ -40,5 +41,6 @@ while True:
    elif direcionamento == 'EXCLUIR':
       ex(direcionamento)
 
-   
+#ef calculadora(custo):
+
    
