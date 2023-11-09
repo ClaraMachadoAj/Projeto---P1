@@ -1,6 +1,9 @@
 import os
 os.system('cls')
 
+
+
+
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
 print('Olá Nathália!')
