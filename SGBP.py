@@ -1,9 +1,6 @@
 import os
 os.system('cls')
 
-
-
-
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
 print('Olá Nathália!')
@@ -11,7 +8,7 @@ print('Olá Nathália!')
 
 while True:
 
-   direcionamento = input('O quê você gostaria de realizar hoje? (adicionar, visualizar, atualizar ou excluir)\n ').upper()
+   direcionamento = input('O quê você gostaria de realizar hoje? [adicionar, visualizar, atualizar ou excluir]\n ').upper()
 
 
    if direcionamento == 'ADICIONAR':
@@ -40,10 +37,6 @@ while True:
             else:
                print(livros)
                break
-
-         
-
-         
 
    elif direcionamento == 'VISUALIZAR':
       vis(direcionamento)
