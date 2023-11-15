@@ -1,6 +1,8 @@
 import os
 os.system ('cls')
 
+#O ATUALIZAR CUSTO E CATEGORIA NÃO ESTÃO FUNCIONANDO
+
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 
 def exibir_livros():
@@ -54,22 +56,23 @@ def atualizar_categoria_livro(nome_livro, nova_categoria):
         linhas = arquivo.readlines()
 
     with open('biblioteca.txt', 'w', encoding='utf-8') as arquivo:
-        for linha in linhas:
-            if f"Nome: {nome_livro}" in linha:
-                linha = linha.replace(f"Categoria: {livros['Categoria'][indice_livro]}", f"Categoria: {nova_categoria}")
-            arquivo.write(linha)
+        for i, linha in enumerate(linhas):
+            if f"Nome: {nome_livro}" in linha and i < len(livros['Categoria']):
+                linhas[i] = linha.replace(f"Categoria: {livros['Categoria'][i]}", f"Categoria: {nova_categoria}")
 
-    print(f"Categoria do livro atualizada para {nova_categoria}")
+        arquivo.writelines(linhas)
+        print(f"Categoria do livro atualizada para {nova_categoria}")
 
 def atualizar_custo_livro(nome_livro_custo, novo_custo):
     with open('biblioteca.txt', 'r', encoding='utf-8') as arquivo:
         linhas = arquivo.readlines()
 
     with open('biblioteca.txt', 'w', encoding='utf-8') as arquivo:
-        for linha in linhas:
-            if f"Nome: {nome_livro_custo}" in linha:
-                linha = linha.replace(f"Custo: {livros['Custo'][indice_livro_custo]}", f"Custo: {novo_custo}")
-            arquivo.write(linha)
+        for i, linha in enumerate(linhas):
+            if f"Nome: {nome_livro_custo}" in linha and i < len(livros['Custo']):
+                linhas[i] = linha.replace(f"Custo: {livros['Custo'][i]}", f"Custo: {novo_custo}")
+
+        arquivo.writelines(linhas)
 
     print(f"Custo do livro atualizado para {novo_custo}")
 
