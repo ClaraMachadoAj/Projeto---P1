@@ -6,7 +6,7 @@ livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
 print('Olá Nathália!')
 
 while True:
-    direcionamento = input('O que você gostaria de realizar hoje? [adicionar, visualizar, atualizar ou excluir]\n').upper()
+    direcionamento = input('O que você gostaria de realizar hoje? [adicionar, visualizar, atualizar, excluir ou sair]: \n').upper()
 
     if direcionamento == 'ADICIONAR':
         while True:
@@ -25,18 +25,20 @@ while True:
             livros['Categoria'].append(categoria)
             livros['Custo'].append(custo)
 
-            arquivo = open('biblioteca.txt', 'a', encoding = 'utf-8')
-            arquivo.write(f"Nome: {nome}, Autor: {autor}, Categoria: {categoria}, Custo: {custo}\n")
-            arquivo.close()
+            arquivo = open('biblioteca.txt', 'a', encoding='utf-8')
+            for i in range(len(livros['Nome'])):
+                arquivo.write(f"Nome: {livros['Nome'][i]}, Autor: {livros['Autor'][i]}, Categoria: {livros['Categoria'][i]}, Custo: {livros['Custo'][i]}\n")
 
             print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
             print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
-            print(f"{nome}\t\t{autor}\t\t{categoria}\t\t{custo}\n")
+
+            for i in range(len(livros['Nome'])):
+                print(f"{livros['Nome'][i]}\t\t{livros['Autor'][i]}\t\t{livros['Categoria'][i]}\t\t{livros['Custo'][i]}\n")
 
             desejo = input('Você deseja continuar adicionando? [S] sim e [N] não. ').upper()
+            arquivo.close()
 
             if desejo != 'S':
-                print(livros)
                 break
 
     elif direcionamento == 'ATUALIZAR':
@@ -125,3 +127,5 @@ while True:
 
             elif pergunta == 'sair':
                 break
+    elif direcionamento == 'sair':
+        break

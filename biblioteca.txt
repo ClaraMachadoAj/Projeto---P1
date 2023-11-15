@@ -1,1 +1,4 @@
-Nome: Hp, Autor: Jk Rowling, Categoria: Fantasia, Custo: 39.90
+
+Nome: Teste1, Autor: Fulano, Categoria: Aventura, Custo: 80.0
+Nome: Teste1, Autor: Fulano, Categoria: Aventura, Custo: 80.0
+Nome: Teste2, Autor: Belcrano, Categoria: Romance, Custo: 80.0
