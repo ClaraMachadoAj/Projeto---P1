@@ -18,14 +18,14 @@ while True:
 
             autor = input("Quem escreveu este livro?\n").title()
             categoria = input("Qual a categoria do livro?\n").title()
-            custo = float(input("Quanto custou este livro?\n"))
+            custo =(input("Quanto custou este livro?\n"))
 
             livros['Nome'].append(nome)
             livros['Autor'].append(autor)
             livros['Categoria'].append(categoria)
             livros['Custo'].append(custo)
 
-            arquivo = open('biblioteca.txt', 'w', 'utf-8')
+            arquivo = open('biblioteca.txt', 'a', encoding = 'utf-8')
             arquivo.write(f"Nome: {nome}, Autor: {autor}, Categoria: {categoria}, Custo: {custo}\n")
             arquivo.close()
 
@@ -61,7 +61,7 @@ while True:
                 with open('biblioteca.txt', 'r') as arquivo:
                     linhas = arquivo.readlines()
 
-                with open('biblioteca.txt', 'w') as arquivo:
+                with open('biblioteca.txt', 'w', encoding = 'utf-8') as arquivo:
                     for linha in linhas:
                         if f"Nome: {nome_antigo}" in linha:
                             linha = linha.replace(nome_antigo, novo_nome)
@@ -84,13 +84,13 @@ while True:
 
                 livros['Categoria'][indice_livro] = nova_categoria
 
-                with open('biblioteca.txt', 'r') as arquivo:
+                with open('biblioteca.txt', 'r', encoding = 'utf-8') as arquivo:
                     linhas = arquivo.readlines()
 
-                with open('biblioteca.txt', 'w') as arquivo:
+                with open('biblioteca.txt', 'w', encoding = 'utf-8') as arquivo:
                     for linha in linhas:
                         if f"Nome: {nome_livro}" in linha:
-                            linha = linha.replace(f"Categoria: {livros['Categoria'][indice_livro]}", f"Categoria: {nova_categoria}")
+                            linha = linha.replace(f"Nome: {nome_livro_custo}, Autor: {livros['Autor'][indice_livro_custo]}, Categoria: {livros['Categoria'][indice_livro_custo]}, Custo: {livros['Custo'][indice_livro_custo]}", f"Nome: {nome_livro_custo}, Autor: {livros['Autor'][indice_livro_custo]}, Categoria: {livros['Categoria'][indice_livro_custo]}, Custo: {novo_custo}")
                         arquivo.write(linha)
 
                 print(f"Categoria do livro atualizada para {nova_categoria}")
@@ -112,10 +112,10 @@ while True:
                 livros['Custo'][indice_livro_custo] = novo_custo
 
                 # Atualizar o custo no arquivo
-                with open('biblioteca.txt', 'r') as arquivo:
+                with open('biblioteca.txt', 'r', encoding = 'utf-8') as arquivo:
                     linhas = arquivo.readlines()
 
-                with open('biblioteca.txt', 'w') as arquivo:
+                with open('biblioteca.txt', 'w', encoding = 'utf-8') as arquivo:
                     for linha in linhas:
                         if f"Nome: {nome_livro_custo}" in linha:
                             linha = linha.replace(f"Custo: {livros['Custo'][indice_livro_custo]}", f"Custo: {novo_custo}")
