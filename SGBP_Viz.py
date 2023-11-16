@@ -110,9 +110,9 @@ while True:
                 if nome_livro not in livros['Nome']:
                     print("Livro não encontrado na biblioteca.")
                     continue
-
-                indice_livro = livros['Nome'].index(nome_livro)
-                nova_categoria = input("Qual é a nova categoria do livro?\n").title()
+                else: 
+                    indice_livro = livros['Nome'].index(nome_livro)
+                    nova_categoria = input("Qual é a nova categoria do livro?\n").title()
 
                 livros['Categoria'][indice_livro] = nova_categoria
                 atualizar_categoria_livro(nome_livro, nova_categoria)
