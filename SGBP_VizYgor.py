@@ -44,6 +44,33 @@ def adicionar_livro():
         if desejo != 'S':
             break
 
+def excluir_livro():
+    nome_livro_excluir = input("Qual o nome do livro que você deseja excluir?\n").title()
+    if nome_livro_excluir not in livros['Nome']:
+        print("Livro não encontrado na biblioteca.")
+        return
+
+    indice_livro_excluir = livros['Nome'].index(nome_livro_excluir)
+    custo_excluir = livros['Custo'][indice_livro_excluir]
+    
+    # Atualizando custo_total
+    global custo_total
+    custo_total -= custo_excluir
+
+    # Removendo o livro da lista
+    livros['Nome'].pop(indice_livro_excluir)
+    livros['Autor'].pop(indice_livro_excluir)
+    livros['Categoria'].pop(indice_livro_excluir)
+    livros['Custo'].pop(indice_livro_excluir)
+
+    # Atualizando o arquivo
+    with open(biblioteca, 'w', encoding='utf-8') as arquivo:
+        for i in range(len(livros['Nome'])):
+            arquivo.write(f"Nome: {livros['Nome'][i]}, Autor: {livros['Autor'][i]}, Categoria: {livros['Categoria'][i]}, Custo: {livros['Custo'][i]}\n")
+
+    print(f"Livro '{nome_livro_excluir}' removido com sucesso.")
+    print(f"Custo total atualizado: {custo_total:.2f}")
+
 def atualizar_nome_livro(nome_antigo, novo_nome):
     with open('biblioteca.txt', 'r') as arquivo:
         linhas = arquivo.readlines()
@@ -93,6 +120,9 @@ while True:
 
     if direcionamento == 'ADICIONAR':
         adicionar_livro()
+
+    elif direcionamento == 'EXCLUIR':
+        excluir_livro()    
 
     elif direcionamento == 'ATUALIZAR':
         while True:

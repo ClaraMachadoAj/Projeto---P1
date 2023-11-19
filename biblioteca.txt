@@ -1,8 +1,1 @@
-Nome: Infantojuvenil, Categoria: Fantasia, Custo: 60.0Nome: Ygor, Autor: Rosa, Categoria: Luiz, Custo: 10.0
-Nome: Dsa, Autor: Fsa, Categoria: Fasf, Custo: 10.0
-Nome: Ygir, Autor: Fd, Categoria: Fas, Custo: 12.0
-Nome: Dfds, Autor: Fafg, Categoria: Gsdb, Custo: 19.0
-Nome: Ygor, Autor: Luiz, Categoria: Rosa, Custo: 19.0
-Nome: Yf, Autor: Fj, Categoria: Ai, Custo: 10.0
-Nome: Ygor, Autor: Rosa, Categoria: Luiz, Custo: 19.0
-Nome: Ygofa, Autor: Fasg, Categoria: Asn, Custo: 10.0
+Nome: As, Autor: Df, Categoria: Gh, Custo: 2.0

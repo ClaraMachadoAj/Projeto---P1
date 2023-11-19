@@ -166,5 +166,3 @@ while True:
     elif direcionamento == 'SAIR':
         break
         print('frase bonitinha de tchau')
-
-    
