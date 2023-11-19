@@ -175,8 +175,6 @@ while True:
                     print("Livro não encontrado na biblioteca.")
                     continue
 
-
-
 # gente, eu fiquei feliz mas o custo não tá substituindo, help
 
             elif pergunta == 'custo':
@@ -198,7 +196,7 @@ while True:
         visualizar_livros()
 
     elif direcionamento == 'SAIR':
-        print('Volte sempre Nathália :D')
+        print('Volte sempre Nathália! :D')
         print(f"Custo total: {custo_total:.2f}")
         break
 
