@@ -94,34 +94,54 @@ while True:
         while True:
             pergunta = input("O que você deseja atualizar? [Nome, Categoria, Custo, Sair]\n").lower()
 
+            #FUNCIONANDO
             if pergunta == 'nome':
-                arquivo = open(biblioteca, 'r+')
                 nome_antigo = input("Qual o nome do livro que você deseja atualizar?\n").title()
-                for verificador in arquivo:
-                    if nome_antigo in verificador:
-                        indice_livro = livros['Nome'].index(nome_antigo)
-                    novo_nome = input("Qual é o novo nome do livro?\n").title()
 
-                    livros['Nome'][indice_livro] = novo_nome
-                    atualizar_nome_livro(nome_antigo, novo_nome)
+                with open(biblioteca, 'r') as arquivo:
+                    linhas = arquivo.readlines()
 
-                else:
+                livro_encontrado = False
+
+                with open(biblioteca, 'w') as arquivo:
+                    for indice, verificador in enumerate(linhas):
+                        if nome_antigo in verificador:
+                            livro_encontrado = True
+                            novo_nome = input("Qual é o novo nome do livro?\n").title()
+                            linhas[indice] = linhas[indice].replace(nome_antigo, novo_nome)
+                            atualizar_nome_livro(nome_antigo, novo_nome)
+
+                    arquivo.writelines(linhas)
+
+                if not livro_encontrado:
                     print("Livro não encontrado na biblioteca.")
                     continue
-
+            #FUNCIONANDO
                 
 
             elif pergunta == 'categoria':
                 nome_livro = input("Qual o nome do livro que você deseja atualizar a categoria?\n").title()
-                if nome_livro not in livros['Nome']:
+
+                with open(biblioteca, 'r') as arquivo:
+                    linhas = arquivo.readlines()
+
+                    livro_encontrado = False
+
+                with open(biblioteca, 'w') as arquivo:
+                    for indice, verificador in enumerate(linhas):
+                        if nome_livro in verificador:
+                            livro_encontrado = True
+                            nova_categoria = input("Qual é a nova categoria do livro?\n").title()
+                            linhas[indice] = verificador.replace(nome_livro, nova_categoria)
+                            atualizar_categoria_livro(nome_livro, nova_categoria)
+
+                    arquivo.writelines(linhas)
+
+                if livro_encontrado == False:
                     print("Livro não encontrado na biblioteca.")
                     continue
-                else: 
-                    indice_livro = livros['Nome'].index(nome_livro)
-                    nova_categoria = input("Qual é a nova categoria do livro?\n").title()
 
-                livros['Categoria'][indice_livro] = nova_categoria
-                atualizar_categoria_livro(nome_livro, nova_categoria)
+
 
 # gente, eu fiquei feliz mas o custo não tá substituindo, help
 
@@ -143,7 +163,8 @@ while True:
     elif direcionamento == 'VISUALIZAR':
         visualizar_livros()
 
-    elif direcionamento == 'sair':
+    elif direcionamento == 'SAIR':
         break
+        print('frase bonitinha de tchau')
 
-    #o break não tá funcionandon
+    
