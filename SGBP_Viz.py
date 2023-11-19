@@ -4,45 +4,7 @@ os.system ('cls')
 #O ATUALIZAR CUSTO E CATEGORIA NÃO ESTÃO FUNCIONANDO
 
 livros = {'Nome': [], 'Autor': [], 'Categoria': [], 'Custo': []}
-
-#CORES
-BLACK  = "\033[30m",
-RED    = "\033[31m",
-GREEN  = "\033[32m",
-YELLOW = "\033[33m",
-BLUE   = "\033[34m",
-PURPLE = "\033[35m",
-CYAN   = "\033[36m",
-WHITE  = "\033[37m",
-
-# background color
-BLACKB  = "\033[40m",
-REDB    = "\033[41m",
-GREENB  = "\033[42m",
-YELLOWB = "\033[43m",
-BLUEB   = "\033[44m",
-PURPLEB = "\033[45m",
-CYANB   = "\033[46m",
-WHITEB  = "\033[47m",
-
-# bold
-B    = "\033[1m",
-BOFF = "\033[22m",
-
-# italics
-I = "\033[3m",
-IOFF = "\033[23m",
-
-# underline
-U = "\033[4m",
-UOFF = "\033[24m",
-
-# invert
-R = "\033[7m",
-ROFF = "\033[27m",
-
-# reset
-RESET  = "\033[0m",
+biblioteca = 'biblioteca.txt'
 
 def exibir_livros():
     print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
@@ -120,7 +82,7 @@ def visualizar_livros():
         conteudo = arquivo.read()
         print(conteudo)
 
-print('BLUEOlá Nathália!BLUE')
+print('Olá Nathália!')
 
 while True:
     direcionamento = input('O que você gostaria de realizar hoje? [adicionar, visualizar, atualizar, excluir ou sair]: \n').upper()
@@ -133,16 +95,21 @@ while True:
             pergunta = input("O que você deseja atualizar? [Nome, Categoria, Custo, Sair]\n").lower()
 
             if pergunta == 'nome':
+                arquivo = open(biblioteca, 'r+')
                 nome_antigo = input("Qual o nome do livro que você deseja atualizar?\n").title()
-                if nome_antigo not in livros['Nome']:
+                for verificador in arquivo:
+                    if nome_antigo in verificador:
+                        indice_livro = livros['Nome'].index(nome_antigo)
+                    novo_nome = input("Qual é o novo nome do livro?\n").title()
+
+                    livros['Nome'][indice_livro] = novo_nome
+                    atualizar_nome_livro(nome_antigo, novo_nome)
+
+                else:
                     print("Livro não encontrado na biblioteca.")
                     continue
 
-                indice_livro = livros['Nome'].index(nome_antigo)
-                novo_nome = input("Qual é o novo nome do livro?\n").title()
-
-                livros['Nome'][indice_livro] = novo_nome
-                atualizar_nome_livro(nome_antigo, novo_nome)
+                
 
             elif pergunta == 'categoria':
                 nome_livro = input("Qual o nome do livro que você deseja atualizar a categoria?\n").title()
@@ -179,4 +146,4 @@ while True:
     elif direcionamento == 'sair':
         break
 
-    #o break não tá funcionando
+    #o break não tá funcionandon
