@@ -44,6 +44,18 @@ def adicionar_livro():
     print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
     exibir_livros(livros)
     
-
+def visualizar_livro():
+  per = input("O que você deseja visualizar? [geral, categoria, favoritos] ").upper()
+    arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
     
+    if per == 'GERAL':
+      print(arquivo.read())
+      
     
+    elif per == 'CATEGORIA':
+      categoria = input('')
+      
+      
+    elif per == 'FAVORITOS':
+      print(arquivo.read().find("Favorito"))
+		    arquivo.close()
