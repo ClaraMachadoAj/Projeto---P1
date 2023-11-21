@@ -88,14 +88,14 @@ def excluir_livros():
   linhas = arquivo.readlines()
   linhas_filtradas = [linha for linha in linhas if escolha in linha]
   if not linhas_filtradas:
-       print('Esse livro não existe em sua biblioteca')
+      print('Esse livro não existe em sua biblioteca')
   else:
-       for linha in linhas_filtradas:
-         linhas.remove(linha)
-       arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
-       arquivo.writelines(linhas)
-       arquivo.close()
-       print(f'O livro {escolha} foi excluído com sucesso')
+      for linha in linhas_filtradas:
+        linhas.remove(linha)
+      arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
+      arquivo.writelines(linhas)
+      arquivo.close()
+      print(f'O livro {escolha} foi excluído com sucesso')
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
