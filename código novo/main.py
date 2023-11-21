@@ -1,15 +1,12 @@
 import os
 os.system('cls')
 
-from visualizar_livro import visualizar_livro
-from atualizar_nome import atualizar_nome
-
 biblioteca  = 'biblioteca.txt'
 livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
 
-print ("Olá Nathália!\n O que você deseja fazer hoje? ")
-direcionamento = input("[adicionar, visualizar, atualizar ou excluir]").upper()
+print ("Olá Nathália!\nO que você deseja fazer hoje? ")
+direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n").upper()
 
 #FUNÇÕES PRINCIPAIS
 def adicionar_livro():
@@ -86,7 +83,7 @@ def visualizar_livro():
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
-def selecionar_linha(arquivo, escolha):
+def selecionar_linha(arquivo):
   for linha in arquivo:
         if escolha in linha:
           print(linha.strip())
