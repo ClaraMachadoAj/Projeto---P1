@@ -1,4 +1,11 @@
 import os
+
+
+
+
+
+
+
 os.system('cls')
 
 from selecionar_linha import selecionar_linha
