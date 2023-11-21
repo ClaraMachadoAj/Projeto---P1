@@ -1,3 +1,6 @@
+
+============================== Biblioteca Pessoal - Manual de Uso ==============================
+
 A biblioteca pessoal foi criada para que você possa organizar sua vida literária de forma interativa e com funções extras, de forma rápida e intuitiva! Incentivando, sempre, a leitura!
 
 → Após inicializar a biblioteca, serão dadas as seguintes informações: você pode adicionar, visualizar, atualizar, excluir, marcador de favorito e sair.
