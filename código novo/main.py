@@ -53,6 +53,12 @@ def adicionar_livro():
     print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
     exibir_livros(livros)
 
+    continuar = input('\nDeseja continuar adicionando livros? [Sim ou Não] ').upper()
+    if continuar == 'SIM':
+      adicionar_livro()
+    else:
+      direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n")
+
 def visualizar_livro():
   per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
     
