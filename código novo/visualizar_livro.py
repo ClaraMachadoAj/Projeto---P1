@@ -1,11 +1,4 @@
 import os
-
-
-
-
-
-
-
 os.system('cls')
 
 from selecionar_linha import selecionar_linha
@@ -27,7 +20,7 @@ def visualizar_livro(generos):
     for index in range(len(generos)):
         print(f'{generos[index]}')
 
-    escolha = input('Qual categoria você deseja visualizar? ')
+    escolha = input('Qual gênero você deseja visualizar? ')
 
     arquivo = open(biblioteca, 'r', encoding = 'utf8') 
     selecionar_linha(arquivo, escolha)
@@ -39,3 +32,6 @@ def visualizar_livro(generos):
     
     
   arquivo.close()
+
+while True:
+   visualizar_livro(generos)
