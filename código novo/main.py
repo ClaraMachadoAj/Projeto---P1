@@ -8,6 +8,9 @@ biblioteca  = 'biblioteca.txt'
 livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
 
+print ("Olá Nathália!\n O que você deseja fazer hoje? ")
+direcionamento = input("[adicionar, visualizar, atualizar ou excluir]").upper()
+
 #FUNÇÕES PRINCIPAIS
 def adicionar_livro():
   
@@ -52,8 +55,8 @@ def adicionar_livro():
     
     print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
     exibir_livros(livros)
- 
-def visualizar_livro(generos):
+
+def visualizar_livro():
   per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
     
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
@@ -64,13 +67,14 @@ def visualizar_livro(generos):
     
   elif per == 'GENERO':
 
-    for index in range(len(generos)):
-        print(f'{generos[index]}')
+    escolha = input('Qual gênero você deseja visualizar? ').upper()
 
-    escolha = input('Qual gênero você deseja visualizar? ')
-
-    arquivo = open(biblioteca, 'r', encoding = 'utf8') 
-    selecionar_linha(arquivo, escolha)
+    linhas = arquivo.readlines()
+    linhas_filtradas = [linha for linha in linhas if escolha in linha]
+    if not linhas_filtradas:
+      print('Esse gênero não existe em sua biblioteca')
+    for linha in linhas_filtradas:
+        print(linha)
 
       
       
@@ -94,9 +98,6 @@ def exibir_livros(livros):
     for index in range(len(livros['NOME'])):
         print(f"{livros['NOME'][index]}\t\t{livros['AUTOR'][index]}\t\t{livros['GENERO'][index]}\t\t{livros['CUSTO'][index]}\n")
 #FUNÇÕES COMPLEMENTARES
-
-print ("Olá Nathália!\n O que você deseja fazer hoje? ")
-direcionamento = input("[adicionar, visualizar, atualizar ou excluir]").upper()
 
 while True:
     #ADICIONAR LIVRO
