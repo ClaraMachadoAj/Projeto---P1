@@ -6,7 +6,7 @@ from selecionar_linha import selecionar_linha
 biblioteca  = 'biblioteca.txt' 
 
 
-def visualizar_livro(generos):
+def visualizar_livro():
   per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
     
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
@@ -17,13 +17,14 @@ def visualizar_livro(generos):
     
   elif per == 'GENERO':
 
-    for index in range(len(generos)):
-        print(f'{generos[index]}')
+    escolha = input('Qual gênero você deseja visualizar? ').upper()
 
-    escolha = input('Qual gênero você deseja visualizar? ')
-
-    arquivo = open(biblioteca, 'r', encoding = 'utf8') 
-    selecionar_linha(arquivo, escolha)
+    linhas = arquivo.readlines()
+    linhas_filtradas = [linha for linha in linhas if escolha in linha]
+    if not linhas_filtradas:
+       print('Esse gênero não existe em sua biblioteca')
+    for linha in linhas_filtradas:
+        print(linha)
 
       
       
@@ -33,5 +34,5 @@ def visualizar_livro(generos):
     
   arquivo.close()
 
-while True:
-   visualizar_livro(generos)
+
+visualizar_livro()
