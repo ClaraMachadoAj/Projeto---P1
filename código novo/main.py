@@ -3,12 +3,24 @@ os.system('cls')
 
 from visualizar_livro import visualizar_livro
 from atualizar_nome import atualizar_nome
+from exibir_livros import exibir_livros
+from selecionar_linha import selecionar_linha
+from adicionar_livro import adicionar_livro
 
+biblioteca  = 'biblioteca.txt'
 livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
-generos = ['FANTASIA','TERROR', 'ROMANCE', 'SUSPENSE', 'AUTOAJUDA']
-biblioteca = 'biblioteca.txt'
+generos = []
 
+print ("Olá Nathália!\n O que você deseja fazer hoje? ")
+direcionamento = input("[adicionar, visualizar, atualizar ou excluir]").upper()
 
-#visualizar_livro(generos)
-
-atualizar_nome(biblioteca)
+while True:
+    #ADICIONAR LIVRO
+    if direcionamento == 'ADICIONAR':
+        adicionar_livro()
+    elif direcionamento == 'VISUALIZAR':
+    #VISUALIZAR LIVRO
+        visualizar_livro(generos)
+    #ATUALIZAR LIVRO
+    
+    #EXCLUIR LIVRO:
