@@ -22,5 +22,6 @@ while True:
     #VISUALIZAR LIVRO
         visualizar_livro(generos)
     #ATUALIZAR LIVRO
-    
+    elif direcionamento == 'ATUALIZAR':
+        atualizar_nome()
     #EXCLUIR LIVRO:
