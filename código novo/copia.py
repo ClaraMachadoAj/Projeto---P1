@@ -9,6 +9,45 @@ livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
 
 #FUNÇÕES PRINCIPAIS
+
+def atualizar_nome():
+
+  # Verifica se o livro existe
+
+  nome_do_livro = input("Qual livro você deseja atualizar? ")
+
+  arquivo = open(biblioteca, 'r', encoding='utf-8')
+
+  for linha in arquivo:
+    if nome_do_livro in linha and linha.split(';')[0] == nome_do_livro:
+      existe = True
+      break
+  else:
+    existe = False
+
+  arquivo.close()
+
+  # Atualiza o nome do livro
+
+  if existe:
+    novo_nome = input("Qual o novo nome do livro? ")
+
+    arquivo = open(biblioteca, 'r+', encoding='utf-8')
+
+    for linha in arquivo:
+      if nome_do_livro in linha:
+        linha = linha.replace(nome_do_livro, novo_nome)
+
+    arquivo.seek(0)
+    arquivo.truncate()
+    arquivo.writelines(arquivo)
+
+    arquivo.close()
+
+  else:
+    print("O livro não existe.")
+
+
 def adicionar_livro():
   
     nome = (input("Qual o nome do livro? ")).upper()
@@ -54,7 +93,7 @@ def adicionar_livro():
     exibir_livros(livros)
  
 def visualizar_livro(generos):
-  per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
+  per = input("O que você deseja visualizar? [geral, genero, favoritos, lista] ").upper()
     
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
 
@@ -82,9 +121,8 @@ def visualizar_livro(generos):
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
-def selecionar_linha(arquivo, escolha):
+def selecionar_linha(arquivo):
   for linha in arquivo:
-        if escolha in linha:
           print(linha.strip())
 
 def exibir_livros(livros):

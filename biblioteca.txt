@@ -1,1 +1,2 @@
-Nome: AAA; Autor: BBB; Genêro Literário: ROMANCE; Custo: 40.0; Favorito
+Nome: AAA; Autor: BBB; Genêro Literário: ROMANCE; Custo: 40.0; FavoritoYGOR; LUIZ; ROSA; 10.0
+-1; -1; -1; 10.0; Favorito
