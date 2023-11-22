@@ -16,3 +16,5 @@ OI; DOIS; TRES; 10.0
 YGOR; EU; ROMANCE; 10.0
 YAGO; ALEXANDRE; ROSA; 10.0
 >>>>>>> Stashed changes
+X; X; X; 10.0; Favorito
+IGOR; ROSA; LUIZ; 20.0

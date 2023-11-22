@@ -4,37 +4,14 @@ os.system('cls')
 biblioteca  = 'biblioteca.txt'
 livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
+custo_total = 0.0
 
 print ("Olá Nathália!\nO que você deseja fazer hoje? ")
 direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n").upper()
 
 #FUNÇÕES PRINCIPAIS
-
-def atualizar_nome():
-  nome_antigo = input('Qual o nome do livro que você deseja atualizar? ').upper()
-  arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
-  arquivo_manipular = arquivo.readlines()
-  existe = False
-  for linha in arquivo_manipular:
-    if nome_antigo in linha:
-      existe = True
-      break
-  if existe:
-    nome_novo = input('Qual o novo nome do livro? ').upper()
-    for linha in arquivo_manipular:
-      if nome_antigo in linha:
-        linha = linha.replace(nome_antigo, nome_novo)
-    
-    arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
-    arquivo.writelines(arquivo_manipular)
-    arquivo.close()
-    print('O livro foi atualizado com sucesso.')
-  else:
-    print('O livro não existe.')
-
-
 def adicionar_livro():
-  
+    global custo_total
     nome = (input("Qual o nome do livro? ")).upper()
     
     arquivo = open(biblioteca, 'r', encoding = 'utf-8')
@@ -64,6 +41,7 @@ def adicionar_livro():
       livros['AUTOR'].append(autor)
       livros['GENERO'].append(genero)
       livros['CUSTO'].append(custo)
+      custo_total += custo
     
       arquivo = open('biblioteca.txt', 'a', encoding='utf-8')
     
@@ -72,10 +50,11 @@ def adicionar_livro():
       else:
         arquivo.write(f"{nome}; {autor}; {genero}; {custo}\n")
     
-    arquivo.close()
-    
     print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
     exibir_livros(livros)
+    print(f"O custo acumulado de todos os livros é de R${custo_total} ")
+
+    arquivo.close()
 
     continuar = input('\nDeseja continuar adicionando livros? [Sim ou Não] ').upper()
     if continuar == 'SIM':
@@ -129,8 +108,9 @@ def excluir_livros():
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
-def selecionar_linha(arquivo):
+def selecionar_linha(arquivo,escolha):
   for linha in arquivo:
+        if escolha in linha:
           print(linha.strip())
 
 def exibir_livros(livros):
@@ -151,4 +131,5 @@ while True:
     #ATUALIZAR LIVRO
     elif direcionamento == 'ATUALIZAR':
         atualizar_nome()
-    #EXCLUIR LIVRO:
+    elif direcionamento == 'EXCLUIR':
+       excluir_livros()

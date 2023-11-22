@@ -4,13 +4,14 @@ os.system('cls')
 biblioteca  = 'biblioteca.txt'
 livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
+custo_total = 0.0
 
 print ("Olá Nathália!\nO que você deseja fazer hoje? ")
 direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n").upper()
 
 #FUNÇÕES PRINCIPAIS
 def adicionar_livro():
-  
+    global custo_total
     nome = (input("Qual o nome do livro? ")).upper()
     
     arquivo = open(biblioteca, 'r', encoding = 'utf-8')
@@ -40,6 +41,7 @@ def adicionar_livro():
       livros['AUTOR'].append(autor)
       livros['GENERO'].append(genero)
       livros['CUSTO'].append(custo)
+      custo_total += custo
     
       arquivo = open('biblioteca.txt', 'a', encoding='utf-8')
     
@@ -48,10 +50,11 @@ def adicionar_livro():
       else:
         arquivo.write(f"{nome}; {autor}; {genero}; {custo}\n")
     
-    arquivo.close()
-    
     print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
     exibir_livros(livros)
+    print(f"O custo acumulado de todos os livros é de R${custo_total} ")
+
+    arquivo.close()
 
     continuar = input('\nDeseja continuar adicionando livros? [Sim ou Não] ').upper()
     if continuar == 'SIM':
@@ -105,7 +108,7 @@ def excluir_livros():
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
-def selecionar_linha(arquivo):
+def selecionar_linha(arquivo,escolha):
   for linha in arquivo:
         if escolha in linha:
           print(linha.strip())
@@ -129,3 +132,4 @@ while True:
     elif direcionamento == 'ATUALIZAR':
         atualizar_nome()
     elif direcionamento == 'EXCLUIR':
+       excluir_livros()
