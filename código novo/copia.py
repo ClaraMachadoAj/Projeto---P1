@@ -12,16 +12,13 @@ direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n").upper(
 
 def atualizar_nome():
   nome_antigo = input('Qual o nome do livro que você deseja atualizar? ').upper()
-
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
   arquivo_manipular = arquivo.readlines()
-
   existe = False
   for linha in arquivo_manipular:
     if nome_antigo in linha:
       existe = True
       break
-
   if existe:
     nome_novo = input('Qual o novo nome do livro? ').upper()
     for linha in arquivo_manipular:
@@ -43,7 +40,7 @@ def adicionar_livro():
     arquivo = open(biblioteca, 'r', encoding = 'utf-8')
     for linha in arquivo:
       if nome in linha:
-        selecao = input(f'o livro {nome} já existe em sua biblioteca, você deseja continuar? [Sim ou Não] ').upper()
+        selecao = input(f'o livro {nome} já existe em sua biblioteca, você deseja continuar? ').upper()
       else:
         selecao = 'SIM'
     arquivo.close()
@@ -109,14 +106,26 @@ def visualizar_livro():
       
       
   elif per == 'FAVORITOS':
-    linhas = arquivo.readlines()
-    linhas_filtradas = [linha for linha in linhas if 'Favorito' in linha]
-    if not linhas_filtradas:
-      print('Você não possui nenhum livro favorito.')
-    for linha in linhas_filtradas:
-        print(linha)
+    print(arquivo.read().find("Favorito"))
+    
     
   arquivo.close()
+
+def excluir_livros():
+  escolha = input('Qual livro você deseja excluir? ').upper()
+
+  arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
+  linhas = arquivo.readlines()
+  linhas_filtradas = [linha for linha in linhas if escolha in linha]
+  if not linhas_filtradas:
+      print('Esse livro não existe em sua biblioteca')
+  else:
+      for linha in linhas_filtradas:
+        linhas.remove(linha)
+      arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
+      arquivo.writelines(linhas)
+      arquivo.close()
+      print(f'O livro {escolha} foi excluído com sucesso')
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
