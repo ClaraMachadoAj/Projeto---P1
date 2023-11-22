@@ -9,10 +9,29 @@ custo_total = 0.0
 
 
 #FUNÇÕES PRINCIPAIS
+import os
+os.system('cls')
+
+biblioteca  = 'biblioteca.txt'
+livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO': [], 'FAVORITO': []}
+generos = []
+custo_total = 0.0
+
+
+
+# FUNÇÕES PRINCIPAIS
 def adicionar_livro():
     global custo_total
     nome = (input("Qual o nome do livro? ")).upper()
-    
+
+    try:
+        if nome == '':
+            raise ValueError('O nome do livro deve ser uma string não vazia.')
+    except ValueError as erro:
+        print(erro)
+        input('\nPressione Enter para continuar...')
+        return
+
     arquivo = open(biblioteca, 'r', encoding = 'utf-8')
     for linha in arquivo:
       if nome in linha:
@@ -29,9 +48,25 @@ def adicionar_livro():
         generos.append(genero)
   
       custo = float(input("\nQuanto custou esse livro? "))
-    
+
+      try:
+        if custo <= 0:
+            raise ValueError('O custo do livro deve ser um número positivo.')
+      except ValueError as erro1:
+        print(erro1)
+        input('\nPressione Enter para continuar...')
+        return
+
       favoritado = input('\nEste livro é um de seus favoritos? [Sim ou Não] ').upper()
-    
+
+      try:
+        if favoritado not in ['SIM', 'NÃO']:
+            raise ValueError('A resposta deve ser "Sim" ou "Não".')
+      except ValueError as erro2:
+        print(erro2)
+        input('\nPressione Enter para continuar...')
+        return
+
       if favoritado == 'SIM':
         livros['FAVORITO'].append(favoritado)
     
@@ -58,8 +93,8 @@ def adicionar_livro():
     continuar = input('\nDeseja continuar adicionando livros? [Sim ou Não] ').upper()
     if continuar == 'SIM':
       adicionar_livro()
-    else:
-      direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n")
+
+
 
 def visualizar_livro():
   per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
@@ -82,8 +117,17 @@ def visualizar_livro():
         print(linha)
 
   elif per == 'FAVORITOS':
-    print(arquivo.read().find("Favorito"))
-    
+    try:
+      linhas = arquivo.readlines()
+      linhas_filtradas = [linha for linha in linhas if 'Favorito' in linha]
+      if not linhas_filtradas:
+        print('Você não tem nenhum livro favorito')
+      else:
+        for linha in linhas_filtradas:
+          print(linha)
+    except FileNotFoundError as erro:
+      print(erro)
+
   arquivo.close()
 
   continuar = input('\nDeseja continuar visualizando livros? [Sim ou Não] ').upper()
@@ -99,6 +143,7 @@ def excluir_livros():
   if not linhas_filtradas:
       print('Esse livro não existe em sua biblioteca')
   else:
+    try:
       for linha in linhas_filtradas:
         linhas.remove(linha)
       arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
@@ -107,20 +152,36 @@ def excluir_livros():
       print(f'O livro {escolha} foi excluído com sucesso')
       custo_total -= livros['CUSTO'][linha]
       print(f'O custo acumulado de todos os livros é de R${custo_total}')
+    except IndexError as erro1:
+      print(erro1)
+
+
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
 def selecionar_linha(arquivo,escolha):
-  for linha in arquivo:
+  try:
+    for linha in arquivo:
         if escolha in linha:
           print(linha.strip())
+  except FileNotFoundError as erro:
+    print(erro)
+  except IndexError as erro1:
+    print(erro1)
 
 def exibir_livros(livros):
+  try:
     print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
 
 
     for index in range(len(livros['NOME'])):
         print(f"{livros['NOME'][index]}\t\t{livros['AUTOR'][index]}\t\t{livros['GENERO'][index]}\t\t{livros['CUSTO'][index]}\n")
+  except FileNotFoundError as erro:
+    print(erro)
+  except IndexError as erro1:
+    print(erro1)
+
+
 #FUNÇÕES COMPLEMENTARES
 
 print ("Olá Nathália! ")
@@ -138,7 +199,7 @@ while True:
       
     #ATUALIZAR LIVRO
     elif direcionamento == 'ATUALIZAR':
-        atualizar_nome()
+        atualizar()
 
     elif direcionamento == 'EXCLUIR':
        excluir_livros()
