@@ -6,8 +6,7 @@ livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
 custo_total = 0.0
 
-print ("Olá Nathália!\nO que você deseja fazer hoje? ")
-direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n").upper()
+
 
 #FUNÇÕES PRINCIPAIS
 def adicionar_livro():
@@ -90,8 +89,6 @@ def visualizar_livro():
   continuar = input('\nDeseja continuar visualizando livros? [Sim ou Não] ').upper()
   if continuar == 'SIM':
     visualizar_livro()
-  else:
-    direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n")
 
 def excluir_livros():
   escolha = input('Qual livro você deseja excluir? ').upper()
@@ -126,15 +123,22 @@ def exibir_livros(livros):
         print(f"{livros['NOME'][index]}\t\t{livros['AUTOR'][index]}\t\t{livros['GENERO'][index]}\t\t{livros['CUSTO'][index]}\n")
 #FUNÇÕES COMPLEMENTARES
 
+print ("Olá Nathália! ")
+
 while True:
+    direcionamento = input("O que você deseja fazer?\n[adicionar, visualizar, atualizar ou excluir]\n").upper()
+
     #ADICIONAR LIVRO
     if direcionamento == 'ADICIONAR':
         adicionar_livro()
+
     elif direcionamento == 'VISUALIZAR':
     #VISUALIZAR LIVRO
         visualizar_livro()
+      
     #ATUALIZAR LIVRO
     elif direcionamento == 'ATUALIZAR':
         atualizar_nome()
+
     elif direcionamento == 'EXCLUIR':
        excluir_livros()
