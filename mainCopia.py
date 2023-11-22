@@ -6,8 +6,6 @@ livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
 custo_total = 0.0
 
-print ("Olá Nathália!\nO que você deseja fazer hoje? ")
-direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n").upper()
 
 #FUNÇÕES PRINCIPAIS
 def adicionar_livro():
@@ -59,39 +57,39 @@ def adicionar_livro():
     continuar = input('\nDeseja continuar adicionando livros? [Sim ou Não] ').upper()
     if continuar == 'SIM':
       adicionar_livro()
-    else:
-      direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n")
+
 
 def visualizar_livro():
   per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
-    
+
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
 
   if per == 'GERAL':
       print(arquivo.read())
-      
-    
+
   elif per == 'GENERO':
 
     escolha = input('Qual gênero você deseja visualizar? ').upper()
 
     linhas = arquivo.readlines()
     linhas_filtradas = [linha for linha in linhas if escolha in linha]
-    if not linhas_filtradas:
-      print('Esse gênero não existe em sua biblioteca')
-    for linha in linhas_filtradas:
-        print(linha)
+    arquivo.close()
 
-  elif per == 'FAVORITOS':
-    print(arquivo.read().find("Favorito"))
-    
+    custo_total_genero = 0
+    for linha in linhas_filtradas:
+      # Usa a linha do arquivo para obter o índice do livro na biblioteca
+      livro = linha.split(';')[0]
+      if escolha in linhas:
+        custo_total_genero += livros['CUSTO'][linhas.index(linha)]
+        print(f"Custo total do gênero {escolha}: R${custo_total_genero}")
+      else:
+        print('Esse gênero não existe em sua biblioteca')
+
   arquivo.close()
 
   continuar = input('\nDeseja continuar visualizando livros? [Sim ou Não] ').upper()
   if continuar == 'SIM':
     visualizar_livro()
-  else:
-    direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n")
 
 def excluir_livros():
   escolha = input('Qual livro você deseja excluir? ').upper()
@@ -126,15 +124,22 @@ def exibir_livros(livros):
         print(f"{livros['NOME'][index]}\t\t{livros['AUTOR'][index]}\t\t{livros['GENERO'][index]}\t\t{livros['CUSTO'][index]}\n")
 #FUNÇÕES COMPLEMENTARES
 
+print ("Olá Nathália! ")
+
 while True:
+    direcionamento = input("O que você deseja fazer?\n[adicionar, visualizar, atualizar ou excluir]\n").upper()
+
     #ADICIONAR LIVRO
     if direcionamento == 'ADICIONAR':
         adicionar_livro()
+
     elif direcionamento == 'VISUALIZAR':
     #VISUALIZAR LIVRO
         visualizar_livro()
+      
     #ATUALIZAR LIVRO
     elif direcionamento == 'ATUALIZAR':
         atualizar_nome()
+
     elif direcionamento == 'EXCLUIR':
        excluir_livros()
