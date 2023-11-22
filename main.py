@@ -92,9 +92,11 @@ def adicionar_livro():
 
 
 def visualizar_livro():
-  per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
+  per = input("O que você deseja visualizar? [geral, genero, favoritos]\n").upper()
     
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
+
+  contador_genero = 0
 
   if per == 'GERAL':
       print(arquivo.read())
@@ -110,6 +112,10 @@ def visualizar_livro():
       print('Esse gênero não existe em sua biblioteca')
     for linha in linhas_filtradas:
         print(linha)
+        linha_dividida = linha.split('; ')
+        contador_genero += float(linha_dividida[3])
+        
+    print(contador_genero)
 
   elif per == 'FAVORITOS':
     try:
@@ -120,6 +126,7 @@ def visualizar_livro():
       else:
         for linha in linhas_filtradas:
           print(linha)
+          
     except FileNotFoundError as erro:
       print(erro)
 

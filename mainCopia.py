@@ -66,6 +66,7 @@ def visualizar_livro():
 
   if per == 'GERAL':
       print(arquivo.read())
+      arquivo.close()
 
   elif per == 'GENERO':
 
@@ -76,16 +77,18 @@ def visualizar_livro():
     arquivo.close()
 
     custo_genero = 0
+    contador = 0
     for linha in linhas_filtradas:
-      livro = linha.split(';')[0]
-      if escolha in linhas:
+      livro = linha.split(';')
+      if escolha in livro:
         custo_ += livros['CUSTO'][linhas.index(linha)]
         if escolha in arquivo:
           print(f"Custo total do gênero {escolha}: R${custo_genero}")
         else:
           print('Esse gênero não existe em sua biblioteca')
+      contador += 1
 
-  arquivo.close()
+  
 
   continuar = input('\nDeseja continuar visualizando livros? [Sim ou Não] ').upper()
   if continuar == 'SIM':
