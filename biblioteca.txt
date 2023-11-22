@@ -18,3 +18,7 @@ YAGO; ALEXANDRE; ROSA; 10.0
 >>>>>>> Stashed changes
 X; X; X; 10.0; Favorito
 IGOR; ROSA; LUIZ; 20.0
+VIVO; CLARO; TIM; 20.0; Favorito
+CLARO; OI; OI; 30.0; Favorito
+VIVO; CLARO; TIM; 20.0
+OI; YGOR; ROSA; 10.0

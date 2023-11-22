@@ -82,13 +82,16 @@ def visualizar_livro():
     for linha in linhas_filtradas:
         print(linha)
 
-      
-      
   elif per == 'FAVORITOS':
     print(arquivo.read().find("Favorito"))
     
-    
   arquivo.close()
+
+  continuar = input('\nDeseja continuar visualizando livros? [Sim ou Não] ').upper()
+  if continuar == 'SIM':
+    visualizar_livro()
+  else:
+    direcionamento = input("[adicionar, visualizar, atualizar ou excluir]\n")
 
 def excluir_livros():
   escolha = input('Qual livro você deseja excluir? ').upper()
@@ -105,6 +108,8 @@ def excluir_livros():
       arquivo.writelines(linhas)
       arquivo.close()
       print(f'O livro {escolha} foi excluído com sucesso')
+      custo_total -= livros['CUSTO'][linha]
+      print(f'O custo acumulado de todos os livros é de R${custo_total}')
 #FUNÇÕES PRINCIPAIS
 
 #FUNÇÕES COMPLEMENTARES
@@ -127,7 +132,7 @@ while True:
         adicionar_livro()
     elif direcionamento == 'VISUALIZAR':
     #VISUALIZAR LIVRO
-        visualizar_livro(generos)
+        visualizar_livro()
     #ATUALIZAR LIVRO
     elif direcionamento == 'ATUALIZAR':
         atualizar_nome()
