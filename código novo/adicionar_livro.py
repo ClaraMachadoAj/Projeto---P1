@@ -43,9 +43,9 @@ def adicionar_livro():
       arquivo = open('biblioteca.txt', 'a', encoding='utf-8')
     
       if favoritado == 'SIM':
-        arquivo.write(f"{nome}; {autor}; {genero}; {custo}; Favorito\n")
+        arquivo.write(f"\n{nome}; {autor}; {genero}; {custo}; Favorito")
       else:
-        arquivo.write(f"{nome}; {autor}; {genero}; {custo}\n")
+        arquivo.write(f"\n{nome}; {autor}; {genero}; {custo}")
     
     arquivo.close()
     

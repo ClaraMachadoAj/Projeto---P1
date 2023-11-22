@@ -128,4 +128,4 @@ while True:
     #ATUALIZAR LIVRO
     elif direcionamento == 'ATUALIZAR':
         atualizar_nome()
-    #EXCLUIR LIVRO:
+    elif direcionamento == 'EXCLUIR':
