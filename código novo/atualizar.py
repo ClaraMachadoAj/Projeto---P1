@@ -2,7 +2,7 @@ import os
 os.system('cls')
 
 
-def atualizar_nome():
+def atualizar():
     verificador = ''
 
     nome_antigo = input('Qual nome você deseja alterar? ')
@@ -15,7 +15,7 @@ def atualizar_nome():
 
                 fav = input("Para modificar um valor de um livro existente digite: MODIFICAR\nPara adicionar ou remover um livro como favorito digite: FAVORITO").upper()
                 if fav == "MODIFICAR":
-                    linha.split(";")
+                    linha.split("; ")
                     arquivo = arquivo.open('bilbioteca.txt' , 'a')
                     choose = input("O que voce deseja alterar: NOME , AUTOR , CATEGORIA , CUSTO ").upper()
                     
