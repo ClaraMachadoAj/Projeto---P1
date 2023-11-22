@@ -6,8 +6,6 @@ livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO':[], 'FAVORITO': []}
 generos = []
 custo_total = 0.0
 
-
-
 #FUNÇÕES PRINCIPAIS
 import os
 os.system('cls')
@@ -16,8 +14,6 @@ biblioteca  = 'biblioteca.txt'
 livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO': [], 'FAVORITO': []}
 generos = []
 custo_total = 0.0
-
-
 
 # FUNÇÕES PRINCIPAIS
 def adicionar_livro():
@@ -95,7 +91,6 @@ def adicionar_livro():
       adicionar_livro()
 
 
-
 def visualizar_livro():
   per = input("O que você deseja visualizar? [geral, genero, favoritos] ").upper()
     
@@ -134,6 +129,7 @@ def visualizar_livro():
   if continuar == 'SIM':
     visualizar_livro()
 
+
 def excluir_livros():
   escolha = input('Qual livro você deseja excluir? ').upper()
 
@@ -169,10 +165,10 @@ def selecionar_linha(arquivo,escolha):
   except IndexError as erro1:
     print(erro1)
 
+
 def exibir_livros(livros):
   try:
     print("Nome\t\t\tAutor\t\t\tCategoria\t\tCusto\n")
-
 
     for index in range(len(livros['NOME'])):
         print(f"{livros['NOME'][index]}\t\t{livros['AUTOR'][index]}\t\t{livros['GENERO'][index]}\t\t{livros['CUSTO'][index]}\n")
@@ -180,7 +176,6 @@ def exibir_livros(livros):
     print(erro)
   except IndexError as erro1:
     print(erro1)
-
 
 #FUNÇÕES COMPLEMENTARES
 

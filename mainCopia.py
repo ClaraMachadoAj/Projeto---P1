@@ -69,21 +69,21 @@ def visualizar_livro():
 
   elif per == 'GENERO':
 
-    escolha = input('Qual gênero você deseja visualizar? ').upper()
+    escolha = input('Qual gênero você deseja visualizar?\n').upper()
 
     linhas = arquivo.readlines()
     linhas_filtradas = [linha for linha in linhas if escolha in linha]
     arquivo.close()
 
-    custo_total_genero = 0
+    custo_genero = 0
     for linha in linhas_filtradas:
-      # Usa a linha do arquivo para obter o índice do livro na biblioteca
       livro = linha.split(';')[0]
       if escolha in linhas:
-        custo_total_genero += livros['CUSTO'][linhas.index(linha)]
-        print(f"Custo total do gênero {escolha}: R${custo_total_genero}")
-      else:
-        print('Esse gênero não existe em sua biblioteca')
+        custo_ += livros['CUSTO'][linhas.index(linha)]
+        if escolha in arquivo:
+          print(f"Custo total do gênero {escolha}: R${custo_genero}")
+        else:
+          print('Esse gênero não existe em sua biblioteca')
 
   arquivo.close()
 
