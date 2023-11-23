@@ -109,8 +109,6 @@ def visualizar_livro():
                 print(f'O seu extrato de seus favoritos é: {contador_fav}')
 
 def excluir_livros():
-    global custo_total
-    
     escolha = input('Qual livro você deseja excluir? ').upper()
 
     with open(biblioteca, 'r', encoding='utf-8') as arquivo:
@@ -125,6 +123,12 @@ def excluir_livros():
                 with open(biblioteca, 'w', encoding='utf-8') as arquivo:
                     arquivo.writelines(linhas)
                 print(f'O livro {escolha} foi excluído com sucesso')
+                # Atualizando o custo_total
+                for index in range(len(livros['NOME'])):
+                    if livros['NOME'][index] == escolha:
+                        custo_total -= livros['CUSTO'][index]
+                        break
+                print(f'O custo acumulado de todos os livros é de R${custo_total}')
             except IndexError as erro1:
                 print(erro1)
 
@@ -157,20 +161,15 @@ def atualizar():
                     linha_split[3] = alteracao
 
                 linhas[i] = "; ".join(linha_split) + '\n'
-                print('Alteração realizada com sucesso!')
 
             elif fav == "FAVORITO":
                 choose_fav = input("Para remover dos FAVORITOS digite: [DESFAVORITAR], Para adicionar digite: [FAVORITAR]\n").upper()
                 if choose_fav == "DESFAVORITAR":
                     linhas[i] = linhas[i].replace('Favorito', '')
-                    print('Alteração realizada com sucesso!')
                     break
-
                 elif 'Favorito' not in linhas[i]:
                         linhas[i] = linhas[i].rstrip('\n') + '; Favorito\n'
-                        print('Alteração realizada com sucesso!')
                         break
-            
     if not encontrado:
         print("O livro inserido não foi encontrado na biblioteca")
     else:
