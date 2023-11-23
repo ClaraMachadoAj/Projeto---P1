@@ -68,7 +68,7 @@ def adicionar_livro():
 
         print("\t\tAs informações do(s) livro(s) adicionado(s) são: \n")
         exibir_livros(livros)
-        print(f"O custo acumulado de todos os livros é de R${custo_total} ")
+        print(f"O custo dos livros adicionados é de: R${custo_total} ")
 
     continuar = input('\nDeseja continuar adicionando livros? [Sim ou Não] ').upper()
     if continuar == 'SIM':
