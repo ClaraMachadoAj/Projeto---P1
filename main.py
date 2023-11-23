@@ -97,6 +97,7 @@ def visualizar_livro():
   arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
 
   contador_genero = 0
+  contador_fav = 0 
 
   if per == 'GERAL':
       print(arquivo.read())
@@ -115,7 +116,7 @@ def visualizar_livro():
         linha_dividida = linha.split('; ')
         contador_genero += float(linha_dividida[3])
         
-    print(contador_genero)
+    print(f'O seu extrato do gênero {escolha} é: {contador_genero}')
 
   elif per == 'FAVORITOS':
     try:
@@ -126,6 +127,9 @@ def visualizar_livro():
       else:
         for linha in linhas_filtradas:
           print(linha)
+          linha_divididafav = linha.split('; ')
+          contador_fav += float(linha_divididafav[3])
+        print(f'O seu extrato de seus favoritos é: {contador_fav}')
           
     except FileNotFoundError as erro:
       print(erro)
