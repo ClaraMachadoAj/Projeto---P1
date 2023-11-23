@@ -15,7 +15,7 @@ def atualizar():
             fav = input("Para modificar um valor de um livro existente digite: MODIFICAR\nPara adicionar ou remover um livro como favorito digite: FAVORITO\n\n").upper()
             if fav == "MODIFICAR":
                 linha_split = linha.split("; ")
-                arquivo = open('biblioteca.txt', 'w+', encoding='utf-8')
+                arquivo = open('biblioteca.txt', 'a', encoding='utf-8')
                 choose = input("O que voce deseja alterar: Nome, Autor, Categoria ou Custo\n").upper()
 
                 if choose == 'NOME':

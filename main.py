@@ -7,13 +7,6 @@ generos = []
 custo_total = 0.0
 
 #FUNÇÕES PRINCIPAIS
-import os
-os.system('cls')
-
-biblioteca  = 'biblioteca.txt'
-livros = {'NOME': [], 'AUTOR': [], 'GENERO': [], 'CUSTO': [], 'FAVORITO': []}
-generos = []
-custo_total = 0.0
 
 # FUNÇÕES PRINCIPAIS
 def adicionar_livro():
