@@ -5,9 +5,13 @@ def atualizar():
     nome_antigo = input('Qual nome do livro você deseja alterar? ').upper()
     encontrado = False
 
-    arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
-    linhas = arquivo.readlines()
-    arquivo.close()
+    try:
+        arquivo = open('biblioteca.txt', 'r', encoding='utf-8')
+        linhas = arquivo.readlines()
+        arquivo.close()
+    except FileNotFoundError:
+        print('O arquivo "biblioteca.txt" não foi encontrado.')
+        return
 
     for i in range(len(linhas)):
         if nome_antigo in linhas[i]:
@@ -35,7 +39,7 @@ def atualizar():
 
             elif fav == "FAVORITO":
                 choose_fav = input("Para remover dos FAVORITOS digite: DESFAVORITAR\n"
-                                   "Para adicionar digite: FAVORITAR").upper()
+                                   "Para adicionar digite: FAVORITAR\n").upper()
                 if choose_fav == "DESFAVORITAR":
                     linhas.pop(i)
                     break
@@ -43,8 +47,13 @@ def atualizar():
     if not encontrado:
         print("O livro inserido não foi encontrado na biblioteca")
     else:
-        arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
-        arquivo.writelines(linhas)
-        arquivo.close()
+        try:
+            arquivo = open('biblioteca.txt', 'w', encoding='utf-8')
+            arquivo.writelines(linhas)
+            arquivo.close()
+        except FileNotFoundError:
+            print('O arquivo "biblioteca.txt" não foi encontrado.')
+
+
 
 atualizar()
