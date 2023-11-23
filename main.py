@@ -188,7 +188,7 @@ def atualizar():
 
             elif fav == "FAVORITO":
                 choose_fav = input("Para remover dos FAVORITOS digite: DESFAVORITAR\n"
-                                   "Para adicionar digite: FAVORITAR").upper()
+                                  "Para adicionar digite: FAVORITAR").upper()
                 if choose_fav == "DESFAVORITAR":
                     linhas.pop(i)
                     break
@@ -244,4 +244,5 @@ while True:
         atualizar()
 
     elif direcionamento == 'EXCLUIR':
-       excluir_livros()
+      excluir_livros()
+      
